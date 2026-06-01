@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam defaultFontSize 13
+
+start
+:点击发布商品;
+:填写标题/描述/价格/分类;
+:上传商品图片;
+:提交;
+
+:写入 product 表;
+
+if (管理员审核?) then (通过)
+  :状态=ACTIVE;
+  :商品上架展示;
+else (违规)
+  :状态=OFFLINE;
+  :通知卖家修改;
+endif
+
+stop
+@enduml

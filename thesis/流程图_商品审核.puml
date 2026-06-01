@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam defaultFontSize 13
+
+start
+:卖家发布商品;
+:商品写入 product 表\nstatus=PENDING;
+
+:管理员查看待审核列表;
+
+if (内容合规?) then (是)
+  :status=ACTIVE;
+  :商品上架展示;
+else (违规)
+  :status=OFFLINE;
+  :填写驳回原因;
+  :通知卖家修改;
+endif
+
+stop
+@enduml

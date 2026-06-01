@@ -1,0 +1,37 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam defaultFontSize 13
+
+start
+:浏览商品列表;
+:搜索/筛选;
+:查看商品详情;
+
+if (加入购物车?) then (是)
+  :添加到 cart 表;
+  :确认下单;
+else (否)
+  :直接购买;
+endif
+
+:生成订单 orders;
+:在线支付;
+
+:平台托管资金\nescrow_record FREEZE;
+:通知卖家发货;
+
+:卖家发货;
+:订单状态→SHIPPED;
+
+:买家确认收货;
+:平台放款\nescrow_record RELEASE;
+
+if (是否评价?) then (是)
+  :写入 review 表;
+endif
+
+stop
+@enduml

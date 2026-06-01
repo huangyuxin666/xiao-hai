@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam defaultFontSize 13
+
+start
+:输入管理员账号密码;
+
+if (验证通过?) then (是)
+  :进入数据概览;
+  :查看平台统计\n(用户数/商品数/订单数);
+else (否)
+  :提示无权限;
+  stop
+endif
+
+if (选择管理模块?) then (用户管理)
+  :查看用户列表;
+  if (违规?) then (是)
+    :封禁账号;
+  else (否)
+    :返回;
+  endif
+else if (商品管理)
+  :审核商品;
+else if (订单管理)
+  :处理异常订单;
+else if (担保交易)
+  :交易仲裁;
+else if (公告管理)
+  :发布/编辑公告;
+else (评价管理)
+  :删除违规评价;
+endif
+
+stop
+@enduml

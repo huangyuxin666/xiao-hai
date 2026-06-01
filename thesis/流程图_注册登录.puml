@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam defaultFontSize 13
+
+start
+:进入平台;
+
+if (已有账号?) then (是)
+  :输入学号+密码;
+  :JWT 验证;
+  if (验证通过?) then (是)
+    :进入首页;
+  else (否)
+    :提示错误;
+    stop
+  endif
+else (否)
+  :点击注册;
+  :填写学号/姓名/学院/密码;
+  :提交注册信息;
+  :写入 user 表;
+  :自动登录;
+  :进入首页;
+endif
+
+stop
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam defaultFontSize 13
+
+start
+:买家/卖家发起争议;
+
+:管理员查看订单详情;
+
+:查看担保流水\nescrow_record;
+
+if (争议类型?) then (退款)
+  :escrow_record REFUND;
+  :资金退回买家;
+  :订单状态→CANCELLED;
+else (放款)
+  :escrow_record RELEASE;
+  :资金放给卖家;
+  :订单状态→COMPLETED;
+endif
+
+stop
+@enduml
