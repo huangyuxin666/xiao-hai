@@ -1,0 +1,159 @@
+@startuml 系统全局ER图
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam defaultFontSize 13
+
+entity "user\n用户" as user {
+  * id : bigint <<PK>>
+  --
+  * student_id : varchar(20) <<UK>>
+  * name : varchar(50)
+  * password : varchar(255)
+  * college : varchar(100)
+  phone : varchar(20)
+  role : varchar(20)
+  status : int
+  avatar : varchar(500)
+  reputation_score : decimal(3,2)
+  create_time : datetime
+  update_time : datetime
+}
+
+entity "product\n商品" as product {
+  * id : bigint <<PK>>
+  --
+  * user_id : bigint <<FK>>
+  * title : varchar(100)
+  description : text
+  * price : decimal(10,2)
+  * category : varchar(50)
+  images : text
+  status : varchar(20)
+  view_count : int
+  create_time : datetime
+  update_time : datetime
+}
+
+entity "orders\n订单" as orders {
+  * id : bigint <<PK>>
+  --
+  * order_no : varchar(50) <<UK>>
+  * buyer_id : bigint <<FK>>
+  * seller_id : bigint <<FK>>
+  * product_id : bigint <<FK>>
+  * product_name : varchar(100)
+  product_image : varchar(500)
+  * price : decimal(10,2)
+  pickup_point_id : bigint
+  pickup_code : varchar(10)
+  * status : varchar(20)
+  cancel_reason : varchar(500)
+  create_time : datetime
+  finish_time : datetime
+}
+
+entity "cart\n购物车" as cart {
+  * id : bigint <<PK>>
+  --
+  * user_id : bigint <<FK>>
+  * product_id : bigint <<FK>>
+  quantity : int
+}
+
+entity "favorite\n收藏" as favorite {
+  * id : bigint <<PK>>
+  --
+  * user_id : bigint <<FK>>
+  * product_id : bigint <<FK>>
+  create_time : datetime
+}
+
+entity "message\n消息" as message {
+  * id : bigint <<PK>>
+  --
+  * sender_id : bigint <<FK>>
+  * receiver_id : bigint <<FK>>
+  product_id : bigint
+  order_id : bigint
+  * content : varchar(1000)
+  is_read : tinyint
+  create_time : datetime
+}
+
+entity "review\n评价" as review {
+  * id : bigint <<PK>>
+  --
+  * order_id : bigint <<FK>> <<UK>>
+  * reviewer_id : bigint <<FK>>
+  * reviewee_id : bigint <<FK>>
+  * rating : int
+  content : varchar(500)
+  create_time : datetime
+}
+
+entity "escrow_record\n担保流水" as escrow {
+  * id : bigint <<PK>>
+  --
+  * order_id : bigint
+  * order_no : varchar(50)
+  * user_id : bigint <<FK>>
+  * user_type : varchar(20)
+  * type : varchar(30)
+  * amount : decimal(10,2)
+  * status : varchar(20)
+  remark : text
+  create_time : datetime
+}
+
+entity "announcement\n公告" as announcement {
+  * id : bigint <<PK>>
+  --
+  * title : varchar(200)
+  * content : text
+  type : varchar(20)
+  is_top : tinyint
+  status : varchar(20)
+  create_time : datetime
+}
+
+entity "pickup_point\n取货点" as pickup {
+  * id : bigint <<PK>>
+  --
+  * name : varchar(100)
+  * location : varchar(200)
+  contact_phone : varchar(20)
+  business_hours : varchar(50)
+}
+
+entity "user_preference\n用户偏好" as preference {
+  * id : bigint <<PK>>
+  --
+  * user_id : bigint <<FK>> <<UK>>
+  preferred_categories : varchar(255)
+  price_range_min : decimal(10,2)
+  price_range_max : decimal(10,2)
+  notification_enabled : tinyint
+}
+
+' === Relations ===
+user ||--o{ product : "发布"
+user ||--o{ cart : "加入"
+user ||--o{ favorite : "收藏"
+user ||--o{ message : "发送"
+user ||--o{ message : "接收"
+user ||--|| preference : "配置"
+user ||--o{ orders : "购买"
+user ||--o{ orders : "出售"
+user ||--o{ review : "评价"
+user ||--o{ review : "被评价"
+user ||--o{ escrow : "资金操作"
+
+product ||--o{ cart : "被加入"
+product ||--o{ favorite : "被收藏"
+product ||--o{ orders : "被购买"
+
+orders ||--|| review : "生成"
+orders ||--o{ escrow : "产生流水"
+@enduml

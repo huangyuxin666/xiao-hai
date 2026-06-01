@@ -1,0 +1,25 @@
+graph LR
+    Student((已注册学生))
+
+    UC1[浏览商品列表]
+    UC2[搜索筛选商品]
+    UC3[查看商品详情]
+    UC4[发布二手商品]
+    UC5[加入购物车]
+    UC6[提交订单]
+    UC7[在线支付]
+    UC8[确认收货]
+    UC9[私信卖家]
+    UC10[收藏商品]
+    UC11[登录登出]
+
+    Student --> UC4
+    Student --> UC9
+    Student --> UC10
+    Student --> UC11
+
+    UC2 -.-> UC1
+    UC3 -.-> UC1
+    UC5 -.-> UC6
+    UC7 -.-> UC6
+    UC8 -.-> UC6

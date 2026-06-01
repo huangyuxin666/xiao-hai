@@ -1,0 +1,45 @@
+@startuml 学生实体图
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 13
+
+entity "user\n用户" as user {
+  id : bigint <<PK>>
+  --
+  student_id : varchar(20) <<UK>>
+  name : varchar(50)
+  password : varchar(255)
+  college : varchar(100)
+  phone : varchar(20)
+  role : varchar(20)
+  status : int
+  avatar : varchar(500)
+  reputation_score : decimal
+  create_time : datetime
+  update_time : datetime
+}
+
+entity "product\n商品" as product
+entity "orders\n订单" as orders
+entity "cart\n购物车" as cart
+entity "favorite\n收藏" as fav
+entity "message\n消息" as msg
+entity "review\n评价" as review
+entity "escrow\n担保流水" as escrow
+entity "user_preference\n用户偏好" as pref
+
+user ||--o{ product : 发布
+user ||--o{ orders : 购买
+user ||--o{ orders : 出售
+user ||--o{ cart : 添加
+user ||--o{ fav : 收藏
+user ||--o{ msg : 发送
+user ||--o{ msg : 接收
+user ||--o{ review : 评价
+user ||--o{ review : 被评
+user ||--o{ escrow : 流水
+user ||--|| pref : 设置
+@enduml

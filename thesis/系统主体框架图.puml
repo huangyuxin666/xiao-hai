@@ -1,0 +1,59 @@
+@startuml 系统主体框架图
+skinparam backgroundColor #FFFFFF
+skinparam componentBackgroundColor #E3F2FD
+skinparam componentBorderColor #1565C0
+skinparam databaseBackgroundColor #E8EAF6
+skinparam databaseBorderColor #3F51B5
+skinparam interfaceBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam defaultFontSize 14
+
+package "浏览器" #F5F5F5 {
+  component "Vue 3 + Vite\n前端 SPA" as Frontend
+}
+
+package "Spring Boot 后端" #F5F5F5 {
+  component "JWT 认证拦截器" as JWT
+
+  package "Controller 层" {
+    interface "REST API" as API
+  }
+
+  package "Service 层" {
+    component "商品服务" as Svc1
+    component "订单服务" as Svc2
+    component "支付服务" as Svc3
+    component "担保交易服务" as Svc4
+    component "收藏服务" as Svc5
+    component "私信服务" as Svc6
+    component "评价服务" as Svc7
+    component "公告服务" as Svc8
+    component "用户服务" as Svc9
+  }
+}
+
+database "MySQL 数据库" as DB
+
+Frontend --> JWT : HTTP Request
+JWT --> API : 校验通过
+API --> Svc1
+API --> Svc2
+API --> Svc3
+API --> Svc4
+API --> Svc5
+API --> Svc6
+API --> Svc7
+API --> Svc8
+API --> Svc9
+Svc1 --> DB
+Svc2 --> DB
+Svc3 --> DB
+Svc4 --> DB
+Svc5 --> DB
+Svc6 --> DB
+Svc7 --> DB
+Svc8 --> DB
+Svc9 --> DB
+
+note right of JWT : Token 方式\n无状态认证
+@enduml

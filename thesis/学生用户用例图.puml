@@ -1,0 +1,53 @@
+@startuml 已注册学生用例图
+skinparam backgroundColor #FFFFFF
+skinparam usecaseBackgroundColor #E8F5E9
+skinparam usecaseBorderColor #2E7D32
+skinparam actorBorderColor #2E7D32
+skinparam arrowColor #2E7D32
+skinparam usecaseFontSize 14
+skinparam actorFontSize 14
+skinparam defaultTextAlignment center
+
+top to bottom direction
+
+actor "已注册学生" as Student
+
+usecase "登录登出" as UC1
+usecase "浏览商品列表" as UC2
+usecase "搜索筛选商品" as UC3
+usecase "查看商品详情" as UC4
+usecase "发布二手商品" as UC5
+usecase "管理我的商品" as UC6
+usecase "加入购物车" as UC7
+usecase "提交订单" as UC8
+usecase "在线支付" as UC9
+usecase "查看订单状态" as UC10
+usecase "确认收货" as UC11
+usecase "担保交易" as UC12
+usecase "收藏商品" as UC13
+usecase "私信卖家" as UC14
+usecase "评价商品" as UC15
+usecase "修改个人信息" as UC16
+usecase "选择自提点" as UC17
+usecase "查看公告" as UC18
+
+Student --> UC1
+Student --> UC2
+Student --> UC5
+Student --> UC7
+Student --> UC8
+Student --> UC13
+Student --> UC14
+Student --> UC16
+Student --> UC18
+
+UC3 ..> UC2 : <<extend>>
+UC4 ..> UC2 : <<extend>>
+UC6 ..> UC5 : <<extend>>
+UC9 ..> UC8 : <<include>>
+UC11 ..> UC10 : <<extend>>
+UC12 ..> UC8 : <<extend>>
+UC15 ..> UC11 : <<extend>>
+
+note bottom of Student : 已登录学生可执行的操作
+@enduml

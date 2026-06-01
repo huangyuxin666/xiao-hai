@@ -1,0 +1,33 @@
+@startuml 学生主用例图
+skinparam backgroundColor #FFFFFF
+skinparam usecaseBackgroundColor #E3F2FD
+skinparam usecaseBorderColor #1565C0
+skinparam actorBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam usecaseFontSize 15
+skinparam actorFontSize 15
+
+left to right direction
+
+actor "已注册学生" as Student
+
+usecase "登录登出" as UC1
+usecase "浏览商品" as UC2
+usecase "发布商品" as UC3
+usecase "加入购物车" as UC4
+usecase "提交订单" as UC5
+usecase "收藏商品" as UC6
+usecase "私信卖家" as UC7
+usecase "修改个人信息" as UC8
+usecase "查看公告" as UC9
+
+Student --> UC1
+Student --> UC2
+Student --> UC3
+Student --> UC4
+Student --> UC5
+Student --> UC6
+Student --> UC7
+Student --> UC8
+Student --> UC9
+@enduml

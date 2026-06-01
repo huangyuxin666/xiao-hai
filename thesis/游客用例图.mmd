@@ -1,0 +1,28 @@
+@startuml 游客用例图
+skinparam backgroundColor #FFFFFF
+skinparam usecaseBackgroundColor #E3F2FD
+skinparam usecaseBorderColor #1565C0
+skinparam actorBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam actorBorderColor #1565C0
+skinparam usecaseFontSize 14
+skinparam actorFontSize 14
+skinparam arrowColor #1565C0
+
+left to right direction
+
+actor "未注册学生\n(游客)" as Visitor
+
+usecase "浏览商品列表" as UC1
+usecase "搜索筛选商品" as UC2
+usecase "查看商品详情" as UC3
+usecase "查看平台公告" as UC4
+usecase "注册账号" as UC5
+
+Visitor --> UC1
+Visitor --> UC4
+Visitor --> UC5
+
+UC2 ..> UC1 : <<extend>>
+UC3 ..> UC1 : <<extend>>
+@enduml

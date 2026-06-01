@@ -1,0 +1,48 @@
+@startuml 系统工作流程图
+skinparam backgroundColor #FFFFFF
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam arrowColor #1565C0
+
+start
+
+:用户登录;
+
+if (已注册?) then (是)
+  :输入账号密码;
+else (否)
+  :注册账号;
+endif
+
+:浏览商品;
+
+:搜索筛选;
+
+:查看详情;
+
+fork
+  :加入购物车;
+fork again
+  :收藏商品;
+fork again
+  :私信卖家;
+end fork
+
+:提交订单;
+
+:在线支付;
+
+:平台托管资金;
+
+:卖家发货;
+
+:确认收货;
+
+:平台放款;
+
+if (评价?) then (是)
+  :发布评价;
+endif
+
+stop
+@enduml

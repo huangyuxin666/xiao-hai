@@ -1,0 +1,31 @@
+@startuml 管理员主用例图
+skinparam backgroundColor #FFFFFF
+skinparam usecaseBackgroundColor #E3F2FD
+skinparam usecaseBorderColor #1565C0
+skinparam actorBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam usecaseFontSize 15
+skinparam actorFontSize 15
+
+left to right direction
+
+actor "管理员" as Admin
+
+usecase "登录登出" as UC1
+usecase "管理用户" as UC2
+usecase "管理商品" as UC3
+usecase "管理订单" as UC4
+usecase "管理担保交易" as UC5
+usecase "管理公告" as UC6
+usecase "管理评价" as UC7
+usecase "查看数据概览" as UC8
+
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+Admin --> UC4
+Admin --> UC5
+Admin --> UC6
+Admin --> UC7
+Admin --> UC8
+@enduml

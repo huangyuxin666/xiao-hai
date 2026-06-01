@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 12
+
+entity "user" {
+  * id : bigint <<PK>>
+  --
+  * student_id : varchar(20) <<UK>>
+  * name : varchar(50)
+  * password : varchar(255)
+  * college : varchar(100)
+  phone : varchar(20)
+  role : varchar(20)
+  status : int
+  avatar : varchar(500)
+  reputation_score : decimal
+  create_time : datetime
+  update_time : datetime
+}
+@enduml

@@ -1,0 +1,38 @@
+@startuml 实体联系图
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam arrowColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 12
+skinparam nodesep 40
+skinparam ranksep 60
+
+left to right direction
+
+entity "用户\nuser" as user
+entity "商品\nproduct" as product
+entity "订单\norders" as orders
+entity "购物车\ncart" as cart
+entity "收藏\nfavorite" as fav
+entity "消息\nmessage" as msg
+entity "评价\nreview" as review
+entity "担保流水\nescrow" as escrow
+entity "公告\nannounce" as ann
+entity "取货点\npickup" as pickup
+entity "用户偏好\nprefer" as pref
+
+user ||--o{ cart
+user ||--o{ fav
+user ||--o{ msg
+user ||--|| pref
+
+user ||--o{ product
+product ||--o{ cart
+product ||--o{ fav
+product ||--o{ orders
+
+user ||--o{ orders
+orders ||--|| review
+orders ||--o{ escrow
+@enduml

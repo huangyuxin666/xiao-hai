@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 12
+
+entity "orders" {
+  * id : bigint <<PK>>
+  --
+  * order_no : varchar(50) <<UK>>
+  * buyer_id : bigint <<FK>>
+  * seller_id : bigint <<FK>>
+  * product_id : bigint <<FK>>
+  * product_name : varchar(100)
+  product_image : varchar(500)
+  * price : decimal(10,2)
+  pickup_point_id : bigint
+  pickup_code : varchar(10)
+  * status : varchar(20)
+  cancel_reason : varchar(500)
+  create_time : datetime
+  finish_time : datetime
+}
+@enduml

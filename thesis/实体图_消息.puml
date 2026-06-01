@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 12
+
+entity "message" {
+  * id : bigint <<PK>>
+  --
+  * sender_id : bigint <<FK>>
+  * receiver_id : bigint <<FK>>
+  product_id : bigint
+  order_id : bigint
+  * content : varchar(1000)
+  is_read : tinyint
+  create_time : datetime
+}
+@enduml

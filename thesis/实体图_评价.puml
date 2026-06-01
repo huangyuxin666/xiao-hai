@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 12
+
+entity "review" {
+  * id : bigint <<PK>>
+  --
+  * order_id : bigint <<FK>> <<UK>>
+  * reviewer_id : bigint <<FK>>
+  * reviewee_id : bigint <<FK>>
+  * rating : int
+  content : varchar(500)
+  create_time : datetime
+}
+@enduml

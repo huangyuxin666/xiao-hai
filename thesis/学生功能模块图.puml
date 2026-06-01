@@ -1,0 +1,53 @@
+@startuml 学生功能模块结构图
+skinparam backgroundColor #FFFFFF
+skinparam componentBackgroundColor #E3F2FD
+skinparam componentBorderColor #1565C0
+skinparam packageBorderColor #1565C0
+skinparam packageFontColor #1565C0
+skinparam arrowColor #1565C0
+skinparam defaultFontSize 14
+
+package "校园二手交易平台" #F5F5F5 {
+
+  package "商品模块" {
+    component "浏览列表" as P1
+    component "搜索筛选" as P2
+    component "查看详情" as P3
+    component "发布商品" as P4
+    component "管理商品" as P5
+  }
+
+  package "交易模块" {
+    component "购物车" as T1
+    component "提交订单" as T2
+    component "在线支付" as T3
+    component "订单状态" as T4
+    component "确认收货" as T5
+  }
+
+  package "担保交易" #E3F2FD {
+    component "资金托管" as E1
+  }
+
+  package "社交模块" {
+    component "收藏商品" as S1
+    component "私信沟通" as S2
+    component "商品评价" as S3
+  }
+
+  package "用户模块" {
+    component "登录注册" as U1
+    component "个人信息" as U2
+    component "自提点" as U3
+    component "系统公告" as U4
+  }
+}
+
+P2 --> P1
+P3 --> P1
+P5 --> P4
+T1 --> T2
+T3 --> T2
+T5 --> T4
+E1 --> T2
+@enduml

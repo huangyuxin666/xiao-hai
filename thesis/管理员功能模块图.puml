@@ -1,0 +1,45 @@
+@startuml 管理员功能模块结构图
+skinparam backgroundColor #FFFFFF
+skinparam componentBackgroundColor #E3F2FD
+skinparam componentBorderColor #1565C0
+skinparam packageBorderColor #1565C0
+skinparam packageFontColor #1565C0
+skinparam arrowColor #1565C0
+skinparam defaultFontSize 14
+
+package "校园二手交易平台 — 管理后台" #F5F5F5 {
+
+  package "数据概览" {
+    component "平台统计" as D1
+  }
+
+  package "用户管理" {
+    component "查看用户" as U1
+    component "封禁/解封" as U2
+  }
+
+  package "商品管理" {
+    component "商品审核" as P1
+    component "下架商品" as P2
+  }
+
+  package "订单管理" {
+    component "查看订单" as O1
+    component "处理异常" as O2
+  }
+
+  package "担保交易管理" {
+    component "交易仲裁" as E1
+  }
+
+  package "公告管理" {
+    component "发布公告" as A1
+    component "编辑公告" as A2
+    component "删除公告" as A3
+  }
+
+  package "评价管理" {
+    component "删除违规评价" as R1
+  }
+}
+@enduml

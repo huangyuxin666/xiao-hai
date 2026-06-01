@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 12
+
+entity "pickup_point" {
+  * id : bigint <<PK>>
+  --
+  * name : varchar(100)
+  * location : varchar(200)
+  contact_phone : varchar(20)
+  business_hours : varchar(50)
+  create_time : datetime
+  update_time : datetime
+}
+@enduml

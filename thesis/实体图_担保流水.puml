@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 12
+
+entity "escrow_record" {
+  * id : bigint <<PK>>
+  --
+  * order_id : bigint
+  * order_no : varchar(50)
+  * user_id : bigint <<FK>>
+  * user_type : varchar(20)
+  * type : varchar(30)
+  * amount : decimal(10,2)
+  * status : varchar(20)
+  related_id : bigint
+  remark : text
+  create_time : datetime
+  update_time : datetime
+}
+@enduml

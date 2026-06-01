@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 12
+
+entity "cart" {
+  * id : bigint <<PK>>
+  --
+  * user_id : bigint <<FK>>
+  * product_id : bigint <<FK>>
+  quantity : int
+  create_time : datetime
+  update_time : datetime
+}
+@enduml

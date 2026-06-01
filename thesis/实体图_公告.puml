@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 12
+
+entity "announcement" {
+  * id : bigint <<PK>>
+  --
+  * title : varchar(200)
+  * content : text
+  type : varchar(20)
+  is_top : tinyint
+  status : varchar(20)
+  create_time : datetime
+  update_time : datetime
+}
+@enduml

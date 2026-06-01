@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam entityBackgroundColor #E3F2FD
+skinparam entityBorderColor #1565C0
+skinparam linetype polyline
+skinparam defaultFontSize 12
+
+entity "product" {
+  * id : bigint <<PK>>
+  --
+  * user_id : bigint <<FK>>
+  * title : varchar(100)
+  description : text
+  * price : decimal(10,2)
+  * category : varchar(50)
+  images : text
+  status : varchar(20)
+  view_count : int
+  create_time : datetime
+  update_time : datetime
+}
+@enduml
